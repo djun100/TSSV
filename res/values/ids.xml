@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="realtabcontent">false</item>
+    <item type="id" name="imageview">false</item>
+    <item type="id" name="listview">false</item>
+    <item type="id" name="textview">false</item>
+    <item type="id" name="home_top_menudraw">false</item>
+    <item type="id" name="home_top_name">false</item>
+    <item type="id" name="actionbar">false</item>
+    <item type="id" name="item_imageview">false</item>
+    <item type="id" name="item_title">false</item>
+    <item type="id" name="item_conten">false</item>
+    <item type="id" name="item_run">false</item>
+</resources>

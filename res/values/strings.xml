@@ -3,6 +3,7 @@
 
     <string name="app_name">TSSV</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="home">首页</string>
+    <string name="network_check_error">请检查网络环境，稍后再试</string>
 
 </resources>
