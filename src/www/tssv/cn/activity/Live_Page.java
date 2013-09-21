@@ -35,6 +35,7 @@ public class Live_Page extends Fragment {
 		super.onCreate(savedInstanceState);
 		domLive = new DomLive();
 		progressDialog = new ProgressDialog(getActivity());
+		progressDialog.setMessage("加载中...");
 		adapter = new LivePageAdapter(getActivity());
 	}
 
