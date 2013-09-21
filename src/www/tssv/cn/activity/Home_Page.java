@@ -8,7 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 import www.tssv.cn.R;
 import www.tssv.cn.adpater.HomePageAdapter;
+import www.tssv.cn.type.TypeHome;
+import www.tssv.cn.utils.DBUtils;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -26,15 +31,19 @@ import android.widget.ImageView.ScaleType;
 
 public class Home_Page extends Fragment {
 
+	private Activity activity;
 	private View homeView;
 	private View listViewHeader;
 	private HomePageAdapter adapter;
+	private List<TypeHome> lists;
 	private ViewPager viewPager; // android-support-v4中的滑动组件
 	private List<ImageView> imageViews; // 滑动的图片集合
 	private ListView listView;
 	private String[] titles; // 图片标题
 	private int[] imageResId; // 图片ID
 	private List<View> dots; // 图片标题正文的那些点
+	private DBUtils dbUtils = null;
+	private ProgressDialog progressDialog;
 
 	private TextView tv_title;
 	private int currentItem = 0; // 当前图片的索引号
@@ -51,22 +60,35 @@ public class Home_Page extends Fragment {
 	};
 
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		activity = getActivity();
+		dbUtils = new DBUtils(activity);
+		adapter = new HomePageAdapter(activity);
+	}
+
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		progressDialog = new ProgressDialog(activity);
+		progressDialog.setMessage("加载中...");
+		listView = (ListView) homeView.findViewById(R.id.listview1);
+		listView.addHeaderView(listViewHeader, null, true);
+		listView.setAdapter(adapter);
 		imageResId = new int[] { R.drawable.dot0, R.drawable.dot1,
 				R.drawable.dot2, R.drawable.dot3, R.drawable.dot4 };
 		titles = new String[imageResId.length];
-		titles[0] = "巩俐不低俗，我就不能低俗";
-		titles[1] = "扑树又回来啦！再唱经典老歌引万人大合唱";
-		titles[2] = "揭秘北京电影如何升级";
-		titles[3] = "乐视网TV版大派送";
-		titles[4] = "热血屌丝的反杀";
+		titles[0] = "献出你的爱心，为贫困山区的孩子";
+		titles[1] = "<<古豆啥呢>> 第二十期 跟我学唐山话2";
+		titles[2] = "评剧交响--《盛世华章》访主创郝立轩、罗慧琴";
+		titles[3] = "平民艺术憾人心--访著名评剧表演艺术家谷文月";
+		titles[4] = "访评剧艺术家--崔连润";
 
 		imageViews = new ArrayList<ImageView>();
 
 		// 初始化图片资源
 		for (int i = 0; i < imageResId.length; i++) {
-			ImageView imageView = new ImageView(getActivity());
+			ImageView imageView = new ImageView(activity);
 			imageView.setImageResource(imageResId[i]);
 			imageView.setScaleType(ScaleType.CENTER_CROP);
 			imageViews.add(imageView);
@@ -86,10 +108,7 @@ public class Home_Page extends Fragment {
 		viewPager.setAdapter(new MyAdapter());// 设置填充ViewPager页面的适配器
 		// 设置一个监听器，当ViewPager中的页面改变时调用
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
-		listView = (ListView) homeView.findViewById(R.id.listview);
-		listView.addHeaderView(listViewHeader, null, true);
-		adapter = new HomePageAdapter(getActivity());
-		listView.setAdapter(adapter);
+		new InitData().execute();
 	}
 
 	@Override
@@ -97,6 +116,8 @@ public class Home_Page extends Fragment {
 			Bundle savedInstanceState) {
 		homeView = inflater.inflate(R.layout.home_page, null);
 		listViewHeader = inflater.inflate(R.layout.imagechange, null);
+		homeView.findViewById(R.id.home_top_bg).setBackgroundResource(
+				R.drawable.home_logo);
 		return homeView;
 	}
 
@@ -114,6 +135,35 @@ public class Home_Page extends Fragment {
 		// 当Activity不可见的时候停止切换
 		scheduledExecutorService.shutdown();
 		super.onStop();
+	}
+
+	class InitData extends AsyncTask<Void, Void, Void> {
+		InitData() {
+		}
+
+		@Override
+		protected Void doInBackground(Void... paramArrayOfVoid) {
+			try {
+				lists = dbUtils.getAllHomes();
+				adapter.setList(lists);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			progressDialog.show();
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			progressDialog.cancel();
+			// adapter.notifyDataSetChanged();
+		}
 	}
 
 	/**

@@ -2,13 +2,12 @@ package www.tssv.cn.adpater;
 
 import java.util.List;
 
-import www.tssv.cn.R;
-import www.tssv.cn.type.TypeHome;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
+import www.tssv.cn.R;
+import www.tssv.cn.type.TypeColumn;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,24 +16,25 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class HomePageAdapter extends BaseAdapter {
+public class ColumnPageAdapter extends BaseAdapter {
 
-	protected ImageLoader imageLoader = ImageLoader.getInstance();
-	private LayoutInflater inflater;
+	protected ImageLoader imageLoader;
 	private DisplayImageOptions options;
-	private List<TypeHome> listItems;
+	private LayoutInflater inflater;
+	private List<TypeColumn> listItems;
 
-	public HomePageAdapter(Context convert) {
-		inflater = LayoutInflater.from(convert);
+	public ColumnPageAdapter(Context context, ImageLoader imageLoader) {
+		inflater = LayoutInflater.from(context);
 		options = new DisplayImageOptions.Builder()
 				.showStubImage(R.drawable.img_logo)
 				.showImageForEmptyUri(R.drawable.img_logo)
 				.showImageOnFail(R.drawable.img_logo).cacheInMemory(true)
 				.cacheOnDisc(true).displayer(new RoundedBitmapDisplayer(20))
 				.build();
+		this.imageLoader = imageLoader;
 	}
 
-	public void setList(List<TypeHome> listItems) {
+	public void setList(List<TypeColumn> listItems) {
 		this.listItems = listItems;
 	}
 
@@ -60,30 +60,26 @@ public class HomePageAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.listview_item, null);
 			viewHolder = new ViewHolder();
-			viewHolder.home_img = (ImageView) convertView
+			convertView = inflater.inflate(R.layout.gridview_item, null);
+			viewHolder.column_img = (ImageView) convertView
 					.findViewById(R.id.item_imageview);
-			viewHolder.home_title = (TextView) convertView
+			viewHolder.column_title = (TextView) convertView
 					.findViewById(R.id.item_title);
-			viewHolder.home_content = (TextView) convertView
-					.findViewById(R.id.item_conten);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		TypeHome typeHome = listItems.get(position);
-		viewHolder.home_title.setText(typeHome.getHome_title());
-		viewHolder.home_content.setText(typeHome.getHome_content());
-		imageLoader.displayImage(typeHome.getHome_img(), viewHolder.home_img, options);
+		TypeColumn typeColumn = listItems.get(position);
+		viewHolder.column_title.setText(typeColumn.getColumn_title());
+		imageLoader.displayImage(typeColumn.getColumn_img(),
+				viewHolder.column_img, options);
 		return convertView;
 	}
 
 	class ViewHolder {
-		public ImageView home_img;
-		public TextView home_title;
-		public TextView home_content;
-		public ImageView home_run;
+		private ImageView column_img;
+		private TextView column_title;
 	}
 
 }

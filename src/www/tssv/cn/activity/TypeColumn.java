@@ -1,6 +1,5 @@
 package www.tssv.cn.activity;
 
-import www.tssv.cn.type.TypeLive;
 import android.os.Parcel;
 import android.os.Parcelable;
 

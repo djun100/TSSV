@@ -61,6 +61,7 @@ public class Live_Page extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		liveView = inflater.inflate(R.layout.live_page, null);
+		liveView.findViewById(R.id.home_top_bg).setBackgroundResource(R.drawable.live_logo);
 		return liveView;
 	}
 

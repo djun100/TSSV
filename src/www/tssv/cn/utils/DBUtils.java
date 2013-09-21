@@ -6,6 +6,8 @@ import java.util.List;
 
 import www.tssv.cn.AppLog;
 import www.tssv.cn.db.DBHelper;
+import www.tssv.cn.type.TypeColumn;
+import www.tssv.cn.type.TypeHome;
 import www.tssv.cn.type.TypeNews;
 
 import android.content.ContentValues;
@@ -43,7 +45,7 @@ public class DBUtils implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 获取所有的news的視頻的个数
 	 * 
@@ -58,7 +60,7 @@ public class DBUtils implements Serializable {
 		db.close();
 		return coutn;
 	}
-	
+
 	/**
 	 * 获取所有的新闻
 	 * 
@@ -78,6 +80,45 @@ public class DBUtils implements Serializable {
 			typeNews.add(news);
 		}
 		return typeNews;
+	}
+
+	/**
+	 * 获取所有的主界面视频
+	 * 
+	 * @return
+	 */
+	public List<TypeHome> getAllHomes() {
+		List<TypeHome> typeHomes = new ArrayList<TypeHome>();
+		SQLiteDatabase db = mDBHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT * FROM news", null);
+		while (cursor.moveToNext()) {
+			TypeHome home = new TypeHome();
+			home.setHome_id(cursor.getInt(0));
+			home.setHome_img(cursor.getString(1));
+			home.setHome_title(cursor.getString(2));
+			home.setHome_content(cursor.getString(3));
+			home.setHome_url(cursor.getString(4));
+			typeHomes.add(home);
+		}
+		return typeHomes;
+	}
+
+	/*
+	 * 得到所有的栏目视频
+	 */
+	public List<TypeColumn> getAllColumns() {
+		List<TypeColumn> typeColumns = new ArrayList<TypeColumn>();
+		SQLiteDatabase db = mDBHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT * FROM colu", null);
+		while (cursor.moveToNext()) {
+			TypeColumn typeColumn = new TypeColumn();
+			typeColumn.setColumn_id(cursor.getInt(0));
+			typeColumn.setColumn_img(cursor.getString(1));
+			typeColumn.setColumn_title(cursor.getString(2));
+			typeColumn.setColumn_type(cursor.getInt(3));
+			typeColumns.add(typeColumn);
+		}
+		return typeColumns;
 	}
 
 }

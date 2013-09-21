@@ -14,6 +14,7 @@ public class Setting_Page extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		settingView = inflater.inflate(R.layout.setting_page, null);
+		settingView.findViewById(R.id.home_top_bg).setBackgroundResource(R.drawable.setting_logo);
 		return settingView;
 	}
 }

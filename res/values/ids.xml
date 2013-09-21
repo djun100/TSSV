@@ -4,6 +4,7 @@
     <item type="id" name="imageview">false</item>
     <item type="id" name="listview">false</item>
     <item type="id" name="textview">false</item>
+    <item type="id" name="home_top_bg">false</item>
     <item type="id" name="home_top_menudraw">false</item>
     <item type="id" name="home_top_name">false</item>
     <item type="id" name="actionbar">false</item>

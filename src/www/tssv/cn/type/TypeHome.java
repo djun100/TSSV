@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 public class TypeHome implements Parcelable {
 
+	private int home_id;
 	private String home_img;
 	private String home_title;
 	private String home_content;
@@ -24,6 +25,7 @@ public class TypeHome implements Parcelable {
 	}
 
 	public void readFromParcel(Parcel in) {
+		home_id = in.readInt();
 		home_img = in.readString();
 		home_title = in.readString();
 		home_content = in.readString();
@@ -32,13 +34,14 @@ public class TypeHome implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(home_id);
 		dest.writeString(home_img);
 		dest.writeString(home_title);
 		dest.writeString(home_content);
 		dest.writeString(home_url);
 	}
 
-	public static Creator<TypeHome> CREATOR  = new Creator<TypeHome>() {
+	public static Creator<TypeHome> CREATOR = new Creator<TypeHome>() {
 		@Override
 		public TypeHome createFromParcel(Parcel source) {
 			return new TypeHome(source);
@@ -49,6 +52,14 @@ public class TypeHome implements Parcelable {
 			return new TypeHome[size];
 		}
 	};
+
+	public int getHome_id() {
+		return home_id;
+	}
+
+	public void setHome_id(int home_id) {
+		this.home_id = home_id;
+	}
 
 	public String getHome_img() {
 		return home_img;

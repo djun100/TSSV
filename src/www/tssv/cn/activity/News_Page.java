@@ -65,6 +65,7 @@ public class News_Page extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		newsView = inflater.inflate(R.layout.news_page, null);
+		newsView.findViewById(R.id.home_top_bg).setBackgroundResource(R.drawable.news_logo);
 		return newsView;
 	}
 
