@@ -1,6 +1,7 @@
 package www.tssv.cn.activity;
 
 import www.tssv.cn.R;
+import www.tssv.cn.TSSV_Exit;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ public class TSSV_Main extends TSSV_Base {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		TSSV_Exit.getInstance().addActivity(this);
 		setContentView(R.layout.activity_tssv);
 		initView();
 	}
