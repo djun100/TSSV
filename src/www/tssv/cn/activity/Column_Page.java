@@ -35,7 +35,6 @@ public class Column_Page extends Fragment {
 		super.onCreate(savedInstanceState);
 		activity = getActivity();
 		adapter = new ColumnPageAdapter(activity, imageLoader);
-		dbUtils = new DBUtils(activity);
 	}
 
 	@Override
@@ -71,6 +70,7 @@ public class Column_Page extends Fragment {
 
 	class InitData extends AsyncTask<Void, Void, Void> {
 		InitData() {
+			dbUtils = new DBUtils(activity);
 		}
 
 		@Override
@@ -88,6 +88,7 @@ public class Column_Page extends Fragment {
 		@Override
 		protected void onPostExecute(Void result) {
 			adapter.notifyDataSetChanged();
+			dbUtils.close();
 			super.onPostExecute(result);
 		}
 	}

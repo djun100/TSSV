@@ -63,7 +63,6 @@ public class Home_Page extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		activity = getActivity();
-		dbUtils = new DBUtils(activity);
 		adapter = new HomePageAdapter(activity);
 	}
 
@@ -139,6 +138,7 @@ public class Home_Page extends Fragment {
 
 	class InitData extends AsyncTask<Void, Void, Void> {
 		InitData() {
+			dbUtils = new DBUtils(activity);
 		}
 
 		@Override
@@ -162,6 +162,7 @@ public class Home_Page extends Fragment {
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			progressDialog.cancel();
+			dbUtils.close();
 			// adapter.notifyDataSetChanged();
 		}
 	}

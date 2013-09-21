@@ -1,7 +1,5 @@
 package www.tssv.cn.server;
 
-import java.util.ArrayList;
-
 import www.tssv.cn.type.TypeNews;
 import www.tssv.cn.utils.DBUtils;
 
@@ -9,11 +7,7 @@ import android.app.Activity;
 
 public class ServerNews {
 
-	private Activity instance;
-	private ArrayList<String> listPages = null;
-
 	public ServerNews(Activity instance) {
-		this.instance = instance;
 		DBUtils dbUtils = new DBUtils(instance);
 		TypeNews news = new TypeNews();
 		news.setNews_img("http://v.tssv.cn/UploadFiles_1779/201309/2013092019581013.jpg");

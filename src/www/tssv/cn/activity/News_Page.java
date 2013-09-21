@@ -58,7 +58,6 @@ public class News_Page extends Fragment {
 		progressDialog = new ProgressDialog(activity);
 		progressDialog.setMessage("加载中...");
 		adapter = new NewsPageAdapter(activity);
-		dbUtils = new DBUtils(activity);
 	}
 
 	@Override
@@ -77,6 +76,7 @@ public class News_Page extends Fragment {
 
 	class InitData extends AsyncTask<Void, Void, Void> {
 		InitData() {
+			dbUtils = new DBUtils(activity);
 		}
 
 		@Override
@@ -101,6 +101,7 @@ public class News_Page extends Fragment {
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			adapter.notifyDataSetChanged();
+			dbUtils.close();
 			if (isFirst) {
 				progressDialog.cancel();
 				isFirst = false;
