@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="realtabcontent">false</item>
-    <item type="id" name="imageview">false</item>
-    <item type="id" name="listview">false</item>
-    <item type="id" name="textview">false</item>
-    <item type="id" name="home_top_bg">false</item>
-    <item type="id" name="home_top_menudraw">false</item>
-    <item type="id" name="home_top_name">false</item>
-    <item type="id" name="actionbar">false</item>
-    <item type="id" name="item_imageview">false</item>
-    <item type="id" name="item_title">false</item>
-    <item type="id" name="item_conten">false</item>
-    <item type="id" name="item_run">false</item>
+
+    <item name="realtabcontent" type="id">false</item>
+    <item name="imageview" type="id">false</item>
+    <item name="listview" type="id">false</item>
+    <item name="listview_home" type="id">false</item>
+    <item name="textview" type="id">false</item>
+    <item name="home_top_bg" type="id">false</item>
+    <item name="home_top_menudraw" type="id">false</item>
+    <item name="home_top_name" type="id">false</item>
+    <item name="actionbar" type="id">false</item>
+    <item name="item_imageview" type="id">false</item>
+    <item name="item_title" type="id">false</item>
+    <item name="item_conten" type="id">false</item>
+    <item name="item_run" type="id">false</item>
+    <item name="home_item_imageview" type="id">false</item>
+    <item name="home_item_title" type="id">false</item>
+    <item name="home_item_conten" type="id">false</item>
+
 </resources>

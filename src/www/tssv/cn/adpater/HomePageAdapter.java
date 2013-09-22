@@ -27,7 +27,6 @@ public class HomePageAdapter extends BaseAdapter {
 	public HomePageAdapter(Context convert) {
 		inflater = LayoutInflater.from(convert);
 		options = new DisplayImageOptions.Builder()
-				.showStubImage(R.drawable.img_logo)
 				.showImageForEmptyUri(R.drawable.img_logo)
 				.showImageOnFail(R.drawable.img_logo).cacheInMemory(true)
 				.cacheOnDisc(true).displayer(new RoundedBitmapDisplayer(20))
@@ -60,14 +59,14 @@ public class HomePageAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.listview_item, null);
+			convertView = inflater.inflate(R.layout.home_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.home_img = (ImageView) convertView
-					.findViewById(R.id.item_imageview);
+					.findViewById(R.id.home_item_imageview);
 			viewHolder.home_title = (TextView) convertView
-					.findViewById(R.id.item_title);
+					.findViewById(R.id.home_item_title);
 			viewHolder.home_content = (TextView) convertView
-					.findViewById(R.id.item_conten);
+					.findViewById(R.id.home_item_conten);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();

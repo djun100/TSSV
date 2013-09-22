@@ -4,7 +4,7 @@ libs/*
 obj/*
 assets/bin/*
 assets/index.txt
-
+project.properties
 local.properties
 
 !libs/*.jar

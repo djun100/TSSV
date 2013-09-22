@@ -39,7 +39,6 @@ public class DomLive {
 			// 通过根元素获得下属的所有名字为live节点
 			NodeList nodeList = rootElement.getElementsByTagName("live");
 			int nodeListcount = nodeList.getLength();
-			AppLog.e("nodeListcount: " + nodeListcount);
 			// 遍历取出来的live节点集合
 			for (int i = 0; i < nodeListcount; i++) {
 				// 得到一个live节点
@@ -49,7 +48,6 @@ public class DomLive {
 				// 取得live标签的下属所有节点
 				NodeList liveChildList = videoElement.getChildNodes();
 				int countChild = liveChildList.getLength();
-				AppLog.e("countChild: " + countChild);
 				for (int j = 0; j < countChild; j++) {
 					// 创建一个引用，指向循环的标签
 					Node node = liveChildList.item(j);

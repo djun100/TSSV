@@ -52,7 +52,6 @@ public class Splash extends Activity {
 	public void checkDB() {
 		File file = new File("/mnt/sdcard/tssv.sqlite");
 		if (!file.exists()) {
-			AppLog.e("no exist");
 			copyDataBase("/mnt/sdcard/tssv.sqlite");
 		}else{
 			AppLog.e("exist");

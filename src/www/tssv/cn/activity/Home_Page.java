@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import www.tssv.cn.AppLog;
 import www.tssv.cn.R;
 import www.tssv.cn.adpater.HomePageAdapter;
 import www.tssv.cn.type.TypeHome;
@@ -24,6 +25,8 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -71,7 +74,7 @@ public class Home_Page extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		progressDialog = new ProgressDialog(activity);
 		progressDialog.setMessage("加载中...");
-		listView = (ListView) homeView.findViewById(R.id.listview1);
+		listView = (ListView) homeView.findViewById(R.id.listview_home);
 		listView.addHeaderView(listViewHeader, null, true);
 		listView.setAdapter(adapter);
 		imageResId = new int[] { R.drawable.dot0, R.drawable.dot1,
@@ -107,6 +110,14 @@ public class Home_Page extends Fragment {
 		viewPager.setAdapter(new MyAdapter());// 设置填充ViewPager页面的适配器
 		// 设置一个监听器，当ViewPager中的页面改变时调用
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				TypeHome typeHome = lists.get(position - 1);
+				AppLog.e(typeHome.getHome_title()+" : "+typeHome.getHome_url());
+			}
+		});
 		new InitData().execute();
 	}
 
