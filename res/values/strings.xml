@@ -6,5 +6,7 @@
     <string name="home">首页</string>
     <string name="network_check_error">请检查网络环境，稍后再试</string>
     <string name="double_back_exit">请再次点击，退出!</string>
+    <string name="down_dragfresh">下拉刷新</string>
+    <string name="dwon_dragtime">更新于好久前</string>
 
 </resources>
