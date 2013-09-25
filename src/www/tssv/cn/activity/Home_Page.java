@@ -14,6 +14,7 @@ import www.tssv.cn.utils.DBUtils;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -116,11 +117,36 @@ public class Home_Page extends Fragment {
 					int position, long id) {
 				TypeHome typeHome = lists.get(position - 1);
 				AppLog.e(typeHome.getHome_title()+" : "+typeHome.getHome_url());
+				//=================================
+				// TODO 2013-09-25 intent to player
+				// just a test
+				startLiveMedia("rtsp://live.tsr.he.cn/tv1");
+				//=================================
 			}
 		});
 		new InitData().execute();
 	}
 
+	/**
+	 * 启动播放器界面
+	 * 
+	 * @param liveUrl
+	 * @param name
+	 * @param pos
+	 */
+	private void startLiveMedia(String liveUrl) {
+		Intent intent = new Intent(activity,
+				PlayerActivity.class);
+
+		ArrayList<String> playlist = new ArrayList<String>();
+		playlist.add(liveUrl);
+		intent.putExtra("selected", 0);
+		intent.putExtra("playlist", playlist);
+		intent.putExtra("title", liveUrl);
+		
+		startActivity(intent);
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

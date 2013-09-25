@@ -8,5 +8,7 @@
     <string name="double_back_exit">请再次点击，退出!</string>
     <string name="down_dragfresh">下拉刷新</string>
     <string name="dwon_dragtime">更新于好久前</string>
+    <string name="nulltime">--:--:--</string>
+    <string name="loading_txt">正在加载中...</string>
 
 </resources>

@@ -29,7 +29,6 @@
         android:scrollbars="none"
         android:scrollingCache="false"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="1dp"
-        ptr:ptrDrawable="@drawable/ic_refresh" />
+        android:verticalSpacing="1dp" />
 
 </LinearLayout>
