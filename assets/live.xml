@@ -15,7 +15,7 @@
         </live_content>
 
         <live_url>
-mms://live.tsr.he.cn/tv1
+rtsp://live.tsr.he.cn/tv1
         </live_url>
 
         <live_pragram_url>
@@ -36,7 +36,7 @@ http://www.tvmao.com/program/TSSV-TSSV1-w6.html
         </live_content>
 
         <live_url>
-mms://live.tsr.he.cn/tv2
+rtsp://live.tsr.he.cn/tv2
         </live_url>
 
         <live_pragram_url>
@@ -57,7 +57,7 @@ http://www.tvmao.com/program/TSSV-TSSV2-w6.html
         </live_content>
 
         <live_url>
-mms://live.tsr.he.cn/tv3
+rtsp://live.tsr.he.cn/tv3
         </live_url>
 
         <live_pragram_url>
@@ -78,7 +78,7 @@ http://www.tvmao.com/program/TSSV-TSSV3-w6.html
         </live_content>
 
         <live_url>
-mms://live.tsr.he.cn/tv4
+rtsp://live.tsr.he.cn/tv4
         </live_url>
 
         <live_pragram_url>

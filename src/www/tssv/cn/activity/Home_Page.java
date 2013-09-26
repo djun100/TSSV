@@ -6,7 +6,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import www.tssv.cn.AppLog;
 import www.tssv.cn.R;
 import www.tssv.cn.adpater.HomePageAdapter;
 import www.tssv.cn.type.TypeHome;
@@ -116,11 +115,10 @@ public class Home_Page extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				TypeHome typeHome = lists.get(position - 1);
-				AppLog.e(typeHome.getHome_title()+" : "+typeHome.getHome_url());
 				//=================================
-				// TODO 2013-09-25 intent to player
+				// 2013-09-25 intent to player
 				// just a test
-				startLiveMedia("rtsp://live.tsr.he.cn/tv1");
+				startLiveMedia(typeHome.getHome_url(), typeHome.getHome_title());
 				//=================================
 			}
 		});
@@ -131,18 +129,16 @@ public class Home_Page extends Fragment {
 	 * 启动播放器界面
 	 * 
 	 * @param liveUrl
-	 * @param name
-	 * @param pos
+	 * @param title
 	 */
-	private void startLiveMedia(String liveUrl) {
-		Intent intent = new Intent(activity,
-				PlayerActivity.class);
+	private void startLiveMedia(String liveUrl, String title) {
+		Intent intent = new Intent(activity, PlayerActivity.class);
 
 		ArrayList<String> playlist = new ArrayList<String>();
 		playlist.add(liveUrl);
 		intent.putExtra("selected", 0);
 		intent.putExtra("playlist", playlist);
-		intent.putExtra("title", liveUrl);
+		intent.putExtra("title", title);
 		
 		startActivity(intent);
 	}

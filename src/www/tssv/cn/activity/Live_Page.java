@@ -1,5 +1,6 @@
 package www.tssv.cn.activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -11,13 +12,20 @@ import www.tssv.cn.R;
 import www.tssv.cn.adpater.LivePageAdapter;
 import www.tssv.cn.dom.DomLive;
 import www.tssv.cn.type.TypeLive;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class Live_Page extends Fragment {
@@ -29,14 +37,28 @@ public class Live_Page extends Fragment {
 	private DomLive domLive;
 	private ProgressDialog progressDialog;
 	private boolean isFirst = true;
-
+	private Activity activity;
+	public static final int FRESH_FINISH = 8888;
+	@SuppressLint("HandlerLeak")
+	public Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case FRESH_FINISH:
+				pullToRefreshListView.onRefreshComplete();
+				break;
+			}
+			super.handleMessage(msg);
+		}
+	};
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		activity = getActivity();
 		domLive = new DomLive();
-		progressDialog = new ProgressDialog(getActivity());
+		progressDialog = new ProgressDialog(activity);
 		progressDialog.setMessage("加载中...");
-		adapter = new LivePageAdapter(getActivity());
+		adapter = new LivePageAdapter(activity);
 	}
 
 	@Override
@@ -55,13 +77,40 @@ public class Live_Page extends Fragment {
 					}
 				});
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				TypeLive typeLive = lists.get(position);
+				startLiveMedia(typeLive.getLive_url(), typeLive.getLive_title());
+			}
+		});
+	}
+
+	/**
+	 * 启动播放器界面
+	 * 
+	 * @param liveUrl
+	 * @param title
+	 */
+	private void startLiveMedia(String liveUrl, String title) {
+		Intent intent = new Intent(getActivity(), PlayerActivity.class);
+
+		ArrayList<String> playlist = new ArrayList<String>();
+		playlist.add(liveUrl);
+		intent.putExtra("selected", 0);
+		intent.putExtra("playlist", playlist);
+		intent.putExtra("title", title);
+
+		startActivity(intent);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		liveView = inflater.inflate(R.layout.live_page, null);
-		liveView.findViewById(R.id.home_top_bg).setBackgroundResource(R.drawable.live_logo);
+		liveView.findViewById(R.id.home_top_bg).setBackgroundResource(
+				R.drawable.live_logo);
 		return liveView;
 	}
 
@@ -101,7 +150,7 @@ public class Live_Page extends Fragment {
 				progressDialog.cancel();
 				isFirst = false;
 			} else {
-				pullToRefreshListView.onRefreshComplete();
+				handler.sendEmptyMessageDelayed(FRESH_FINISH, 5000);
 			}
 		}
 	}

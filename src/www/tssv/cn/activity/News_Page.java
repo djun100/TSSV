@@ -1,5 +1,6 @@
 package www.tssv.cn.activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -11,14 +12,20 @@ import www.tssv.cn.R;
 import www.tssv.cn.adpater.NewsPageAdapter;
 import www.tssv.cn.type.TypeNews;
 import www.tssv.cn.utils.DBUtils;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class News_Page extends Fragment {
@@ -32,7 +39,19 @@ public class News_Page extends Fragment {
 	private ProgressDialog progressDialog;
 	private boolean isFirst = true;
 	private DBUtils dbUtils = null;
-
+	public static final int FRESH_FINISH = 8888;
+	@SuppressLint("HandlerLeak")
+	public Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case FRESH_FINISH:
+				pullToRefreshListView.onRefreshComplete();
+				break;
+			}
+			super.handleMessage(msg);
+		}
+	};
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -49,6 +68,32 @@ public class News_Page extends Fragment {
 					}
 				});
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				TypeNews typeNews = lists.get(position);
+				startLiveMedia(typeNews.getNews_url(), typeNews.getNews_title());
+			}
+		});
+	}
+
+	/**
+	 * 启动播放器界面
+	 * 
+	 * @param liveUrl
+	 * @param title
+	 */
+	private void startLiveMedia(String liveUrl, String title) {
+		Intent intent = new Intent(getActivity(), PlayerActivity.class);
+
+		ArrayList<String> playlist = new ArrayList<String>();
+		playlist.add(liveUrl);
+		intent.putExtra("selected", 0);
+		intent.putExtra("playlist", playlist);
+		intent.putExtra("title", title);
+
+		startActivity(intent);
 	}
 
 	@Override
@@ -64,7 +109,8 @@ public class News_Page extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		newsView = inflater.inflate(R.layout.news_page, null);
-		newsView.findViewById(R.id.home_top_bg).setBackgroundResource(R.drawable.news_logo);
+		newsView.findViewById(R.id.home_top_bg).setBackgroundResource(
+				R.drawable.news_logo);
 		return newsView;
 	}
 
@@ -106,7 +152,7 @@ public class News_Page extends Fragment {
 				progressDialog.cancel();
 				isFirst = false;
 			} else {
-				pullToRefreshListView.onRefreshComplete();
+				handler.sendEmptyMessageDelayed(FRESH_FINISH, 5000);
 			}
 		}
 	}
