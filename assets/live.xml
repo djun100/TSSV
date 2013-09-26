@@ -11,7 +11,7 @@
         </live_title>
 
         <live_content>
-  新闻综合频道
+頻道加载中
         </live_content>
 
         <live_url>
@@ -19,7 +19,7 @@ rtsp://live.tsr.he.cn/tv1
         </live_url>
 
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV1-w6.html
+http://www.tvmao.com/program/TSSV-TSSV1-w
         </live_pragram_url>
     </live>
 
@@ -33,6 +33,7 @@ http://www.tvmao.com/program/TSSV-TSSV1-w6.html
         </live_title>
 
         <live_content>
+ 頻道加载中
         </live_content>
 
         <live_url>
@@ -40,7 +41,7 @@ rtsp://live.tsr.he.cn/tv2
         </live_url>
 
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV2-w6.html
+http://www.tvmao.com/program/TSSV-TSSV2-w
         </live_pragram_url>
     </live>
 
@@ -54,6 +55,7 @@ http://www.tvmao.com/program/TSSV-TSSV2-w6.html
         </live_title>
 
         <live_content>
+ 頻道加载中
         </live_content>
 
         <live_url>
@@ -61,7 +63,7 @@ rtsp://live.tsr.he.cn/tv3
         </live_url>
 
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV3-w6.html
+http://www.tvmao.com/program/TSSV-TSSV3-w
         </live_pragram_url>
     </live>
 
@@ -75,6 +77,7 @@ http://www.tvmao.com/program/TSSV-TSSV3-w6.html
         </live_title>
 
         <live_content>
+ 頻道加载中
         </live_content>
 
         <live_url>
@@ -82,7 +85,7 @@ rtsp://live.tsr.he.cn/tv4
         </live_url>
 
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV4-w6.html
+http://www.tvmao.com/program/TSSV-TSSV4-w
         </live_pragram_url>
     </live>
 
