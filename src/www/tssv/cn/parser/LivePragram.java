@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import www.tssv.cn.AppLog;
+import www.tssv.cn.TSetting;
 import www.tssv.cn.type.TypePragrams;
 import www.tssv.cn.utils.DateUtils;
 
@@ -19,7 +19,7 @@ public class LivePragram {
 		TypePragrams typePragrams = null;
 		boolean isFirst = true;
 		boolean flag = false;
-		int cur_time = DateUtils.getDateToInt();
+		int cur_time = TSetting.getWeekDay = DateUtils.getDateToInt();
 		try {
 			Document document = Jsoup.connect(url).get();
 			Element ul = document.getElementById("pgrow");
@@ -46,7 +46,6 @@ public class LivePragram {
 							}
 						}
 					}
-					AppLog.e(text[0]+" : "+text[1]);
 				}
 			}
 		} catch (Exception e) {

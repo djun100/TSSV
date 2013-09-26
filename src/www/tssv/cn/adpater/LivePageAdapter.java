@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import www.tssv.cn.R;
+import www.tssv.cn.TSetting;
 import www.tssv.cn.parser.LivePragram;
 import www.tssv.cn.type.TypeLive;
 import www.tssv.cn.type.TypePragrams;
@@ -22,7 +23,7 @@ public class LivePageAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
 	private List<TypeLive> listItems;
 	private int weekDay = DateUtils.getTodayWeekDay();
-	private ArrayList<TypePragrams> list_1 = null, list_2 =null, list_3 = null, list_4 = null;
+	private ArrayList<TypePragrams> list_1 = null, list_2 = null, list_3 = null, list_4 = null;
 	
 	public LivePageAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
@@ -30,6 +31,23 @@ public class LivePageAdapter extends BaseAdapter {
 
 	public void setList(List<TypeLive> listItems){
 		this.listItems = listItems;
+		new InitData().execute();
+	}
+	
+	/**
+	 * 更新
+	 */
+	public void updatePragram(){
+		if (list_1 != null && TSetting.getWeekDay != DateUtils.getDateToInt()) {
+			list_1.clear();
+			list_1 = null;
+			list_2.clear();
+			list_2 = null;
+			list_3.clear();
+			list_3 = null;
+			list_4.clear();
+			list_4 = null;
+		}
 		new InitData().execute();
 	}
 	@Override

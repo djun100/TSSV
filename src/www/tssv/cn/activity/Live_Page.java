@@ -127,8 +127,13 @@ public class Live_Page extends Fragment {
 		@Override
 		protected Void doInBackground(Void... paramArrayOfVoid) {
 			try {
-				lists = domLive.parseXml(getActivity());
-				adapter.setList(lists);
+				if (lists == null) {
+					lists = domLive.parseXml(getActivity());
+					adapter.setList(lists);
+				}else {
+					adapter.updatePragram();
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
