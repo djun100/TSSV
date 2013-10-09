@@ -10,8 +10,11 @@ import java.util.TimerTask;
 import www.tssv.cn.AppLog;
 import www.tssv.cn.R;
 import www.tssv.cn.TSSV_Exit;
+import www.tssv.cn.TSetting;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -47,16 +50,47 @@ public class Splash extends Activity {
 	}
 
 	private String dbPath = Environment.getExternalStorageDirectory()
-			+ "/tssv.sqlite";
-
+			+ "/TSSV/tssv.sqlite";
+	private String dbDir = Environment.getExternalStorageDirectory()
+			+ "/TSSV";
+	
 	public void checkDB() {
-		File file = new File("/mnt/sdcard/tssv.sqlite");
-		if (!file.exists()) {
-			copyDataBase("/mnt/sdcard/tssv.sqlite");
-		}else{
-			AppLog.e("exist");
+		AppLog.e(Environment.getExternalStorageDirectory()+"");
+		File fileDir = new File(dbDir);
+		if (!fileDir.exists()) {
+			fileDir.mkdirs();
+			AppLog.e("创建目录");
+		}else {
+			AppLog.e("目录已经存在");
 		}
-			
+		File file = new File(dbPath);
+		if (isFirstIn()) {
+			if (file.exists()) {
+				file.delete();
+				AppLog.e("删除文件");
+			}else {
+				AppLog.e("第一次启动");
+			}
+			writeFirstParm();
+			copyDataBase(dbPath);
+		}else if(!file.exists()){
+			copyDataBase(dbPath);
+		}
+	}
+	
+	public boolean isFirstIn() {
+		SharedPreferences preferences = getSharedPreferences(
+				TSetting.ISFIRSTLOAD, MODE_PRIVATE);
+		boolean isFirst = preferences.getBoolean("isFirstIn", true);
+		return isFirst;
+	}
+
+	public void writeFirstParm() {
+		SharedPreferences preferences = getSharedPreferences(
+				TSetting.ISFIRSTLOAD, MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putBoolean("isFirstIn", false);
+		editor.commit();
 	}
 
 	private void copyDataBase(String outpath) {

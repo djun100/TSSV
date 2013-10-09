@@ -81,7 +81,7 @@ public class Live_Page extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				TypeLive typeLive = lists.get(position);
+				TypeLive typeLive = lists.get(position-1);
 				startLiveMedia(typeLive.getLive_url(), typeLive.getLive_title());
 			}
 		});

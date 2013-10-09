@@ -1,92 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <lives>
-
     <live>
-
         <live_img>
         </live_img>
-
         <live_title>
-新闻综合频道
-        </live_title>
-
+			新闻综合频道        </live_title>
         <live_content>
-頻道加载中
+			頻道加载中
         </live_content>
-
         <live_url>
-rtsp://live.tsr.he.cn/tv1
-        </live_url>
-
+			rtsp://live.tsr.he.cn/tv1        </live_url>
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV1-w
-        </live_pragram_url>
+			http://www.tvmao.com/program/TSSV-TSSV1-w        </live_pragram_url>
     </live>
-
     <live>
-
         <live_img>
         </live_img>
-
         <live_title>
-生活服务频道
-        </live_title>
-
+			生活服务频道        </live_title>
         <live_content>
- 頻道加载中
+ 			頻道加载中
         </live_content>
-
         <live_url>
-rtsp://live.tsr.he.cn/tv2
-        </live_url>
-
+			rtsp://live.tsr.he.cn/tv2        </live_url>
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV2-w
-        </live_pragram_url>
+			http://www.tvmao.com/program/TSSV-TSSV2-w        </live_pragram_url>
     </live>
-
     <live>
-
         <live_img>
         </live_img>
-
         <live_title>
-影视频道
-        </live_title>
-
+			影视频道        </live_title>
         <live_content>
- 頻道加载中
+ 			頻道加载中
         </live_content>
-
         <live_url>
-rtsp://live.tsr.he.cn/tv3
-        </live_url>
-
+			rtsp://live.tsr.he.cn/tv3        </live_url>
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV3-w
-        </live_pragram_url>
+			http://www.tvmao.com/program/TSSV-TSSV3-w        </live_pragram_url>
     </live>
-
     <live>
-
         <live_img>
         </live_img>
-
         <live_title>
-公共频道
-        </live_title>
-
+			公共频道        </live_title>
         <live_content>
- 頻道加载中
+ 			頻道加载中
         </live_content>
-
         <live_url>
-rtsp://live.tsr.he.cn/tv4
-        </live_url>
-
+			rtsp://live.tsr.he.cn/tv4        </live_url>
         <live_pragram_url>
-http://www.tvmao.com/program/TSSV-TSSV4-w
-        </live_pragram_url>
+			http://www.tvmao.com/program/TSSV-TSSV4-w        </live_pragram_url>
     </live>
-
 </lives>

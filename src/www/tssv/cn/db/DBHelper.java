@@ -10,7 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	private static final String NAME = "tssv.sqlite";
 	private static final String DB_PATH = Environment
-			.getExternalStorageDirectory() + "/";
+			.getExternalStorageDirectory() + "/TSSV/";
 	private static final int DB_VERSION = 1;
 	private static final String LIVE_SQL = "CREATE TABLE live ('live_id' INTEGER PRIMARY KEY  AUTOINCREMENT, 'live_img' VARCHAR, 'live_title' VARCHAR, 'live_content' VARCHAR, 'live_url' VARCHAR, 'live_pragram_url' VARCHAR)";
 	private static final String NEWS_SQL = "CREATE TABLE news ('news_id' INTEGER PRIMARY KEY  AUTOINCREMENT, 'news_img' VARCHAR, 'news_title' VARCHAR, 'news_content' VARCHAR, 'news_url' VARCHAR)";
