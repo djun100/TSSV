@@ -65,7 +65,7 @@ public class Live_Page extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		pullToRefreshListView = (PullToRefreshListView) liveView
-				.findViewById(R.id.listview);
+				.findViewById(R.id.listview_live);
 		pullToRefreshListView.setMode(Mode.PULL_FROM_END);
 		listView = pullToRefreshListView.getRefreshableView();
 		pullToRefreshListView

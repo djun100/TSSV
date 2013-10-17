@@ -9,7 +9,7 @@
     <string name="down_dragfresh">下拉刷新</string>
     <string name="dwon_dragtime">更新于好久前</string>
     <string name="nulltime">--:--:--</string>
-    <string name="loading_txt">正在加载中...</string>
+    <string name="loading_txt">正在加载中....</string>
     <string name="setting_soft">软件相关</string>
     <string name="setting_soft_share">分享软件</string>
     <string name="setting_soft_clear_cache">清除缓存</string>
@@ -17,4 +17,9 @@
 	<string name="setting_soft_contact">关于我们</string>
 	<string name="setting_other">其他</string>
 	<string name="setting_other_quality_applications">精品应用</string>
+	<string name="share_subject">唐山网络电视台手机客户端</string>
+	<string name="share_title">唐山网络电视台</string>
+	<string name="share_text">欢迎使用唐山网络电视台的手机客户端\n http://v.tssv.cn/</string>
+	<string name="share_select">选择分享</string>
+	<string name="cache_size_temp">0KB</string>
 </resources>

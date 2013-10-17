@@ -5,7 +5,6 @@ import www.tssv.cn.TSSV_Exit;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -77,12 +76,6 @@ public class TSSV_Main extends TSSV_Base {
 		TextView textView = (TextView) view.findViewById(R.id.textview);
 		textView.setText(mTextviewArray[index]);
 		return view;
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.tssv, menu);
-		return true;
 	}
 
 }

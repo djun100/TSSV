@@ -5,6 +5,9 @@
     <item name="imageview" type="id">false</item>
     <item name="listview" type="id">false</item>
     <item name="listview_home" type="id">false</item>
+    <item name="listview_live" type="id">false</item>
+    <item name="listview_news" type="id">false</item>
+    <item name="gridview_column" type="id">false</item>
     <item name="textview" type="id">false</item>
     <item name="home_top_bg" type="id">false</item>
     <item name="home_top_menudraw" type="id">false</item>
@@ -18,8 +21,14 @@
     <item name="home_item_title" type="id">false</item>
     <item name="home_item_conten" type="id">false</item>
 	<item name="share_tssv" type="id">false</item>
+	<item name="share_tssv_p" type="id">false</item>
 	<item name="clear_cache" type="id">false</item>
+	<item name="clear_cache_p" type="id">false</item>
+	<item name="cache_size_show" type="id">false</item>
 	<item name="soft_feedback" type="id">false</item>
+	<item name="soft_feedback_p" type="id">false</item>
 	<item name="contack_me" type="id">false</item>
+	<item name="contack_me_p" type="id">false</item>
 	<item name="quality_application" type="id">false</item>
+	<item name="quality_application_p" type="id">false</item>
 </resources>

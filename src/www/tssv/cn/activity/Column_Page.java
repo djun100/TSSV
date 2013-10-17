@@ -40,7 +40,7 @@ public class Column_Page extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		gridView = (GridView) columnView.findViewById(R.id.gridview);
+		gridView = (GridView) columnView.findViewById(R.id.gridview_column);
 		gridView.setAdapter(adapter);
 		new InitData().execute();
 	}

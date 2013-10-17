@@ -56,7 +56,7 @@ public class News_Page extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		pullToRefreshListView = (PullToRefreshListView) newsView
-				.findViewById(R.id.listview);
+				.findViewById(R.id.listview_news);
 		pullToRefreshListView.setMode(Mode.PULL_FROM_END);
 		listView = pullToRefreshListView.getRefreshableView();
 		pullToRefreshListView
