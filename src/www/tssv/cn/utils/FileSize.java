@@ -34,11 +34,11 @@ public class FileSize {
 	   this.longSize=0;
 	  
 	   //如果文件存在而且是文件，直接返回文件大小
-	   if(file.exists()&&file.isFile())
+	   if(file.exists() && file.isFile())
 	   {
 	    this.longSize= file.length();
 	   //文件存在而且是目录，递归遍历文件目录计算文件大小 
-	   }else if(file.exists()&&file.isDirectory())
+	   }else if(file.exists() && file.isDirectory())
 	   {
 		   getFileSize(file);//递归遍历
 	   }else
