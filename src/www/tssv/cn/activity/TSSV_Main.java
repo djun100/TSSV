@@ -1,5 +1,8 @@
 package www.tssv.cn.activity;
 
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.update.UmengUpdateAgent;
+
 import www.tssv.cn.R;
 import www.tssv.cn.TSSV_Exit;
 import android.os.Bundle;
@@ -36,7 +39,23 @@ public class TSSV_Main extends TSSV_Base {
 		TSSV_Exit.getInstance().addActivity(this);
 		setContentView(R.layout.activity_tssv);
 		initView();
+//		如果想程序启动时自动检查是否需要更新， 把下面代码加在Activity 的onCreate()函数里。
+		UmengUpdateAgent.update(this);
 	}
+
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
 
 	/**
 	 * 初始化组件

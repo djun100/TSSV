@@ -14,6 +14,7 @@
     <string name="setting_soft_share">分享软件</string>
     <string name="setting_soft_clear_cache">清除缓存</string>
     <string name="setting_soft_feedback">意见反馈</string>
+    <string name="setting_soft_update">软件更新</string>
 	<string name="setting_soft_contact">关于我们</string>
 	<string name="setting_other">其他</string>
 	<string name="setting_other_quality_applications">精品应用</string>

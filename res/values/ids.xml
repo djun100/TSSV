@@ -23,6 +23,8 @@
 	<item name="share_tssv_p" type="id">false</item>
 	<item name="clear_cache" type="id">false</item>
 	<item name="clear_cache_p" type="id">false</item>
+	<item name="soft_update" type="id">false</item>
+	<item name="soft_update_p" type="id">false</item>
 	<item name="cache_size_show" type="id">false</item>
 	<item name="soft_feedback" type="id">false</item>
 	<item name="soft_feedback_p" type="id">false</item>

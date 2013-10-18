@@ -3,6 +3,8 @@ package www.tssv.cn.activity;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.umeng.analytics.MobclickAgent;
+
 import www.tssv.cn.R;
 import www.tssv.cn.TSSV_Exit;
 import android.app.Activity;
@@ -22,6 +24,7 @@ public class TSSV_Base extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		MobclickAgent.setDebugMode( true );
 	}
 
 	@Override

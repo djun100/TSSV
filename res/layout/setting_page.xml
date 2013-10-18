@@ -91,11 +91,10 @@
                     android:id="@id/cache_size_show"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_toLeftOf="@+id/cache_local_test"
                     android:layout_marginRight="5dip"
+                    android:layout_toLeftOf="@+id/cache_local_test"
                     android:gravity="center_vertical"
                     android:text="@string/cache_size_temp" />
-
             </RelativeLayout>
 
             <ImageView
@@ -117,6 +116,37 @@
                     android:layout_marginLeft="5dip"
                     android:gravity="center_vertical"
                     android:text="@string/setting_soft_feedback"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dip"
+                    android:background="@drawable/setting_click"
+                    android:contentDescription="@string/app_name" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dip"
+                android:background="@drawable/sc_line"
+                android:contentDescription="@string/app_name" />
+
+            <RelativeLayout
+                android:id="@id/soft_update_p"
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@id/soft_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dip"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_soft_update"
                     android:textSize="15sp" />
 
                 <ImageView
@@ -175,30 +205,32 @@
             android:gravity="center_vertical"
             android:text="@string/setting_other"
             android:textSize="25sp" />
-            <RelativeLayout
-                android:id="@id/quality_application_p"
+
+        <RelativeLayout
+            android:id="@id/quality_application_p"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="@drawable/concor"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@id/quality_application"
                 android:layout_width="match_parent"
-                android:layout_height="40dip"
-                android:background="@drawable/concor"
-                android:orientation="horizontal" >
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dip"
+                android:gravity="center_vertical"
+                android:text="@string/setting_other_quality_applications"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:id="@id/quality_application"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_other_quality_applications"
-                    android:layout_marginLeft="5dip"
-                    android:textSize="15sp" />
+            <ImageView
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dip"
+                android:background="@drawable/setting_click"
+                android:contentDescription="@string/app_name" />
+        </RelativeLayout>
+    </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dip"
-                    android:layout_height="20dip"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="5dip"
-                    android:background="@drawable/setting_click"
-                    android:contentDescription="@string/app_name" />
-            </RelativeLayout>
-       </LinearLayout>
 </LinearLayout>
